@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Rat = function (name,weight,speed,status) {
+        this.name= name;
+        this.weight = weight;
+        this.speed = speed;
+        this.status = status;
+        this.status = true;
+        this.getSpeed=function () {
+            return this.speed
+        };
+
+        this.say = function () {
+            return console.log(this.name+": Chit chit ");
+        };
+        this.showStatus = function () {
+            if (this.status === true){
+                console.log("Jerry is living");
+            }else {
+                console.log("Jerry is death");
+            }
+        }
+    };
+
+    let Cat = function (name,weight,speed) {
+        this.name = name;
+        this.weight = weight;
+        this.maxSpeed = speed;
+
+        this.say = function () {
+            return console.log(this.name+": Meo meo");
+        };
+        this.catch=function (rat) {
+
+            if (this.maxSpeed > rat.getSpeed()) {
+                return true
+            }
+        };
+        this.eat = function (rat) {
+            if (this.catch){
+                console.log("Eating");
+                rat.status = false;
+                this.weight += rat.weight;
+            }
+            else {
+                console.log("Jerry is dead")
+            }
+        }
+    };
+    let tom = new Cat("Tom",30,30);
+    let jerry = new Rat("Jerry",10,10);
+    jerry.say();
+    tom.say();
+    jerry.showStatus();
+    tom.catch(jerry);
+    tom.eat(jerry);
+    jerry.showStatus();
+    console.log(tom.weight);
+
+
+</script>
+</body>
+</html>
